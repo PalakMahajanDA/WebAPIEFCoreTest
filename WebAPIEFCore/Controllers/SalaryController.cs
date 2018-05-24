@@ -42,9 +42,9 @@ namespace WebAPIEFCore.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+               
             //if (id != employees.Id)
-            //{
+            //{hfdskjhfk
             //    return BadRequest();
             //}
             objemployees = Getdetails(id);
