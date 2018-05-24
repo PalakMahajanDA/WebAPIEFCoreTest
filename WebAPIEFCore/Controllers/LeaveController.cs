@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,33 +10,31 @@ using WebAPIEFCore.Models;
 namespace WebAPIEFCore.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Employees")]
-    public class LeaveController : Controller
+    [Route("api/Employees/[Action]")]
+    public class SalaryController : Controller
     {
         private readonly WebAPIEFCoreContext _context;
 
-        public LeaveController(WebAPIEFCoreContext context)
+        public SalaryController(WebAPIEFCoreContext context)
         {
             _context = context;
         }
-         
-        // GET: api/Employees
-        [HttpGet]
-        public IEnumerable<Employees> GetEmployees()
+             
+        private Employees Getdetails (int id)
         {
-            return _context.Employees;
-        }
+        
 
-        private Employees Getdetails(int id)
-        {
-            var employees = _context.Employees.FirstOrDefault(m => m.Id == id);
+            var employees =  _context.Employees.FirstOrDefault(m => m.Id == id);
+
+           
+
             return employees;
         }
 
         // GET: api/SearchEmployees/test
         [HttpPatch("{id}")]
         [ActionName("UpdateSalary")]
-        public async Task<IActionResult> UpdateSalary([FromRoute] int id, [FromBody] DateTime LeaveDate)
+        public async Task<IActionResult> UpdateSalary([FromRoute] int id, [FromBody] Decimal Salary)
         {
             Employees objemployees = new Employees();
 
@@ -44,13 +42,13 @@ namespace WebAPIEFCore.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+               
             //if (id != employees.Id)
             //{hfdskjhfk
             //    return BadRequest();
             //}
             objemployees = Getdetails(id);
-            objemployees.LeaveDate = LeaveDate;
+            objemployees.Salary = Salary;
             _context.Entry(objemployees).State = EntityState.Modified;
 
             try
