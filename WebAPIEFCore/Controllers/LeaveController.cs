@@ -18,7 +18,7 @@ namespace WebAPIEFCore.Controllers
         public SalaryController(WebAPIEFCoreContext context)
         {
             _context = context;
-        }
+        } 
              
         private Employees Getdetails (int id)
         {
