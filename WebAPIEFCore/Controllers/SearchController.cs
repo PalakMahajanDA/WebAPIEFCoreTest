@@ -15,12 +15,12 @@ namespace WebAPIEFCore.Controllers
     {
         private readonly WebAPIEFCoreContext _context;
 
-        //public EmployeesController(WebAPIEFCoreContext context)
-        //{
-        //    //_context = context;
-        //}
+        public SearchController(WebAPIEFCoreContext context)
+        {
+            _context = context;
+        }
 
-     
+
         // GET: api/SearchEmployees/test
         [HttpGet("{Name}")]
         [ActionName("SearchEmployees")]

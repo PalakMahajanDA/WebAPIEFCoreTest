@@ -46,25 +46,7 @@ namespace WebAPIEFCore.Controllers
             return Ok(employees);
         }
 
-        // GET: api/SearchEmployees/test
-        [HttpGet("{Name}")]
-        [ActionName("SearchEmployees")]
-        public async Task<IActionResult>SearchEmployees([FromRoute] string Name)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var employees = await _context.Employees.SingleOrDefaultAsync(m => (Name.Contains(m.FirstName)|| Name.Contains(m.LastName)));
-
-            if (employees == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(employees);
-        }
+     
 
         // PUT: api/Employees/5
         [HttpPut("{id}")]
