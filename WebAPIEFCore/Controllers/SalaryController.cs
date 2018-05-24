@@ -10,7 +10,7 @@ using WebAPIEFCore.Models;
 namespace WebAPIEFCore.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Employees")]
+    [Route("api/Employees/[Action]")]
     public class SalaryController : Controller
     {
         private readonly WebAPIEFCoreContext _context;
@@ -20,28 +20,36 @@ namespace WebAPIEFCore.Controllers
             _context = context;
         }
 
-        // GET: api/Employees
-        [HttpGet]
-        public IEnumerable<Employees> GetEmployees()
+        private Employees Getdetails(int id)
         {
-            return _context.Employees;
+
+
+            var employees = _context.Employees.FirstOrDefault(m => m.Id == id);
+
+
+
+            return employees;
         }
 
-        // PUT: api/Employees/5
+        // GET: api/SearchEmployees/test
         [HttpPatch("{id}")]
-        public async Task<IActionResult> PutEmployees([FromRoute] int id, [FromBody] Employees employees)
+        [ActionName("UpdateSalary")]
+        public async Task<IActionResult> UpdateSalary([FromRoute] int id, [FromBody] Decimal Salary)
         {
+            Employees objemployees = new Employees();
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != employees.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(employees.).State = EntityState.Modified;
+            //if (id != employees.Id)
+            //{hfdskjhfk
+            //    return BadRequest();
+            //}
+            objemployees = Getdetails(id);
+            objemployees.Salary = Salary;
+            _context.Entry(objemployees).State = EntityState.Modified;
 
             try
             {
@@ -68,4 +76,5 @@ namespace WebAPIEFCore.Controllers
         }
 
     }
+}
 }

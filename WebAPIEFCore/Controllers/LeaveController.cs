@@ -11,11 +11,11 @@ namespace WebAPIEFCore.Controllers
 {
     [Produces("application/json")]
     [Route("api/Employees/[Action]")]
-    public class SalaryController : Controller
+    public class LeaveController : Controller
     {
         private readonly WebAPIEFCoreContext _context;
 
-        public SalaryController(WebAPIEFCoreContext context)
+        public LeaveController(WebAPIEFCoreContext context)
         {
             _context = context;
         } 
@@ -34,7 +34,7 @@ namespace WebAPIEFCore.Controllers
         // GET: api/SearchEmployees/test
         [HttpPatch("{id}")]
         [ActionName("UpdateSalary")]
-        public async Task<IActionResult> UpdateSalary([FromRoute] int id, [FromBody] Decimal Salary)
+        public async Task<IActionResult> UpdateSalary([FromRoute] int id, [FromBody] DateTime LeaveDate)
         {
             Employees objemployees = new Employees();
 
@@ -48,7 +48,7 @@ namespace WebAPIEFCore.Controllers
             //    return BadRequest();
             //}
             objemployees = Getdetails(id);
-            objemployees.Salary = Salary;
+            objemployees.LeaveDate = LeaveDate;
             _context.Entry(objemployees).State = EntityState.Modified;
 
             try
