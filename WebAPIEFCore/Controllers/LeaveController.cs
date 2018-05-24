@@ -34,7 +34,7 @@ namespace WebAPIEFCore.Controllers
         // GET: api/SearchEmployees/test
         [HttpPatch("{id}")]
         [ActionName("UpdateSalary")]
-        public async Task<IActionResult> UpdateSalary([FromRoute] int id, [FromBody] DateTime LeaveDate)
+        public async Task<IActionResult> UpdateLeave([FromRoute] int id, [FromBody] DateTime LeaveDate)
         {
             Employees objemployees = new Employees();
 
