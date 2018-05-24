@@ -11,5 +11,9 @@ namespace WebAPIEFCore.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int ManagerID { get; set; }
+
+        public Decimal Salary { get; set; }
+
+        public DateTime LeaveDate { get; set; }
     }
 }
