@@ -10,7 +10,7 @@ using WebAPIEFCore.Models;
 namespace WebAPIEFCore.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Employees")]
+    [Route("api/[Controller]/[Action]")]
     public class EmployeesController : Controller
     {
         private readonly WebAPIEFCoreContext _context;
@@ -37,6 +37,26 @@ namespace WebAPIEFCore.Controllers
             }
 
             var employees = await _context.Employees.SingleOrDefaultAsync(m => m.Id == id);
+
+            if (employees == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(employees);
+        }
+
+        // GET: api/SearchEmployees/test
+        [HttpGet("{Name}")]
+        [ActionName("SearchEmployees")]
+        public async Task<IActionResult>SearchEmployees([FromRoute] string Name)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var employees = await _context.Employees.SingleOrDefaultAsync(m => (Name.Contains(m.FirstName)|| Name.Contains(m.LastName)));
 
             if (employees == null)
             {
