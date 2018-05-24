@@ -19,7 +19,7 @@ namespace WebAPIEFCore.Controllers
         {
             _context = context;
         }
-
+             
         private Employees Getdetails (int id)
         {
         
