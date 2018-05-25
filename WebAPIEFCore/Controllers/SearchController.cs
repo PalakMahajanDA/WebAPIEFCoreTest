@@ -23,7 +23,6 @@ namespace WebAPIEFCore.Controllers
 
         // GET: api/SearchEmployees/test
         [HttpGet("{Name}")]
-        [ActionName("SearchEmployees")]
         public async Task<IActionResult>SearchEmployees([FromRoute] string Name)
         {
             if (!ModelState.IsValid)

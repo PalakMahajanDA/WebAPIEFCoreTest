@@ -22,18 +22,12 @@ namespace WebAPIEFCore.Controllers
              
         private Employees Getdetails (int id)
         {
-        
-
             var employees =  _context.Employees.FirstOrDefault(m => m.Id == id);
-              
-           
-
             return employees;
         }
 
         // GET: api/SearchEmployees/test
         [HttpPatch("{id}")]
-        [ActionName("UpdateSalary")]
         public async Task<IActionResult> UpdateLeave([FromRoute] int id, [FromBody] DateTime LeaveDate)
         {
             Employees objemployees = new Employees();

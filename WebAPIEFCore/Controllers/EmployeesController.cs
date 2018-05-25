@@ -10,7 +10,7 @@ using WebAPIEFCore.Models;
 namespace WebAPIEFCore.Controllers
 {
     [Produces("application/json")]
-    [Route("api/[Controller]/[Action]")]
+    [Route("api/Employees/[Action]")]
     public class EmployeesController : Controller
     {
         private readonly WebAPIEFCoreContext _context;

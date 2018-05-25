@@ -33,7 +33,6 @@ namespace WebAPIEFCore.Controllers
 
         // GET: api/SearchEmployees/test
         [HttpPatch("{id}")]
-        [ActionName("UpdateSalary")]
         public async Task<IActionResult> UpdateSalary([FromRoute] int id, [FromBody] Decimal Salary)
         {
             Employees objemployees = new Employees();
