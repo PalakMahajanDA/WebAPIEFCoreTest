@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
-namespace LearningAPI.DB.Migrations
+namespace WebAPIEFCore.Migrations
 {
-    public partial class LearnngAPIDB : Migration
+    public partial class initialcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

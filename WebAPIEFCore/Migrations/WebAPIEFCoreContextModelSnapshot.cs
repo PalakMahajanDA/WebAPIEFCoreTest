@@ -10,7 +10,7 @@ using WebAPIEFCore.Models;
 
 namespace WebAPIEFCore.Migrations
 {
-    [DbContext(typeof(WebAPIEFCoreContext))]
+    [DbContext(typeof(EmployeeContext))]
     partial class WebAPIEFCoreContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -20,7 +20,7 @@ namespace WebAPIEFCore.Migrations
                 .HasAnnotation("ProductVersion", "2.0.3-rtm-10026")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WebAPIEFCore.Models.Employees", b =>
+            modelBuilder.Entity("LearningAPI.Models.Employees", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -29,7 +29,11 @@ namespace WebAPIEFCore.Migrations
 
                     b.Property<string>("LastName");
 
+                    b.Property<DateTime>("LeaveDate");
+
                     b.Property<int>("ManagerID");
+
+                    b.Property<decimal>("Salary");
 
                     b.HasKey("Id");
 

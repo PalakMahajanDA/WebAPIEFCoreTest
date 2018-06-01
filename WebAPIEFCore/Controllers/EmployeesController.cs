@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using WebAPIEFCore.Models;
+using LearningAPI.DataLogic;
+using LearningAPI.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebAPIEFCore.Controllers
 {
@@ -13,115 +15,99 @@ namespace WebAPIEFCore.Controllers
     [Route("api/Employees/[Action]")]
     public class EmployeesController : Controller
     {
-        private readonly WebAPIEFCoreContext _context;
 
-        public EmployeesController(WebAPIEFCoreContext context)
+        private IDAWebAPIEFCore<Employees, int> _iRepo;
+
+        public EmployeesController(IDAWebAPIEFCore<Employees, int> repo)
         {
-            _context = context;
+            _iRepo = repo;
         }
 
+        /// <summary>
+        /// This will get All Employees
+        /// </summary>
+        /// <returns></returns>
         // GET: api/Employees
         [HttpGet]
         public IEnumerable<Employees> GetEmployees()
         {
-            return _context.Employees;
+            return _iRepo.GetAll();
         }
 
-        // GET: api/Employees/5
+        /// <summary>
+        /// This will get Employee of specific id
+        /// </summary>
+        /// <param name="id">Please provide Employee ID</param>
+        /// <returns></returns>
+        // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetEmployees([FromRoute] int id)
+        public Employees Get([Required]int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var employees = await _context.Employees.SingleOrDefaultAsync(m => m.Id == id);
-
-            if (employees == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(employees);
+            return _iRepo.Get(id);
         }
 
-     
-
-        // PUT: api/Employees/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployees([FromRoute] int id, [FromBody] Employees employees)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != employees.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(employees).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EmployeesExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Employees
+        // POST api/values
+        /// <summary>
+        /// This will add new Employee
+        /// </summary>
+        /// <param name="employees"> Spouse Name is mandatory if Married</param>
         [HttpPost]
-        public async Task<IActionResult> PostEmployees([FromBody] Employees employees)
+        public void Post([FromBody]Employees employees)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            _context.Employees.Add(employees);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetEmployees", new { id = employees.Id }, employees);
+            _iRepo.Add(employees);
         }
-
-        // DELETE: api/Employees/5
+        /// <summary>
+        /// update employee
+        /// </summary>
+        /// <param name="employees"></param>
+        // POST api/values
+        [HttpPut]
+        public void Put([FromBody]Employees employees)
+        {
+            _iRepo.Update(employees.Id, employees);
+        }
+        /// <summary>
+        /// delete employee
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        // DELETE api/values/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEmployees([FromRoute] int id)
+        public int Delete(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var employees = await _context.Employees.SingleOrDefaultAsync(m => m.Id == id);
-            if (employees == null)
-            {
-                return NotFound();
-            }
-
-            _context.Employees.Remove(employees);
-            await _context.SaveChangesAsync();
-
-            return Ok(employees);
+            return _iRepo.Delete(id);
+        }
+        /// <summary>
+        /// update Leave Date
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="leaveDate"></param>
+        /// <returns></returns>
+        [HttpPatch("{id}")]
+        public int UpdateLeaveDate([FromBody]int id, DateTime leaveDate)
+        {
+            return _iRepo.UpdateLeaveDate(id, leaveDate);
         }
 
-        private bool EmployeesExists(int id)
+        /// <summary>
+        /// Update Salary
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <param name="Salary">Salary</param>
+        /// <returns></returns>
+        [HttpPatch("{id}")]
+        public int UpdateSalary([FromBody]int id, decimal Salary)
         {
-            return _context.Employees.Any(e => e.Id == id);
+            return _iRepo.UpdateSalary(id, Salary);
+        }
+
+
+        // GET api/values/5
+        [HttpGet("{Name}")]
+        public Employees GetEmployeesbyName(string name)
+        {
+            return _iRepo.GetEmployeesbyName(name);
         }
     }
 }
+

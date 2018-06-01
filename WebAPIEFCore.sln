@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIEFCore", "WebAPIEFCore\WebAPIEFCore.csproj", "{A5038DC0-6DDD-4CAE-9041-8CD7DC828A09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPIEFCore", "WebAPIEFCore\WebAPIEFCore.csproj", "{A5038DC0-6DDD-4CAE-9041-8CD7DC828A09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningAPI.Models", "LearningAPI.Models\LearningAPI.Models.csproj", "{5FB4A422-DE10-4F86-8655-575DEA56ADC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI.Test", "WebAPI.Test\WebAPI.Test.csproj", "{B1A799F8-04DE-4D59-8B84-E3264449BA88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningAPI.DB", "LearningAPI.DB\LearningAPI.DB.csproj", "{20A29160-B972-4F62-9880-C277FBF1B88A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{04FF69BA-0620-4652-B92E-A921FF01ABCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningAPI.DataLogic", "LearningAPI.DataLogic\LearningAPI.DataLogic.csproj", "{B70DD6D4-94F7-49EA-953A-6549A7555075}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningAPI.Models", "LearningAPI.Models\LearningAPI.Models.csproj", "{4B47F453-AB44-428C-9253-F89A7B60379F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +23,18 @@ Global
 		{A5038DC0-6DDD-4CAE-9041-8CD7DC828A09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5038DC0-6DDD-4CAE-9041-8CD7DC828A09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5038DC0-6DDD-4CAE-9041-8CD7DC828A09}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5FB4A422-DE10-4F86-8655-575DEA56ADC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5FB4A422-DE10-4F86-8655-575DEA56ADC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5FB4A422-DE10-4F86-8655-575DEA56ADC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5FB4A422-DE10-4F86-8655-575DEA56ADC6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{20A29160-B972-4F62-9880-C277FBF1B88A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{20A29160-B972-4F62-9880-C277FBF1B88A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{20A29160-B972-4F62-9880-C277FBF1B88A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{20A29160-B972-4F62-9880-C277FBF1B88A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1A799F8-04DE-4D59-8B84-E3264449BA88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1A799F8-04DE-4D59-8B84-E3264449BA88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1A799F8-04DE-4D59-8B84-E3264449BA88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1A799F8-04DE-4D59-8B84-E3264449BA88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B70DD6D4-94F7-49EA-953A-6549A7555075}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B70DD6D4-94F7-49EA-953A-6549A7555075}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B70DD6D4-94F7-49EA-953A-6549A7555075}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B70DD6D4-94F7-49EA-953A-6549A7555075}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B47F453-AB44-428C-9253-F89A7B60379F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B47F453-AB44-428C-9253-F89A7B60379F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B47F453-AB44-428C-9253-F89A7B60379F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B47F453-AB44-428C-9253-F89A7B60379F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

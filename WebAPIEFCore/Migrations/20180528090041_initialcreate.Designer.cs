@@ -8,19 +8,20 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 using WebAPIEFCore.Models;
 
-namespace LearningAPI.DB.Migrations
+namespace WebAPIEFCore.Migrations
 {
-    [DbContext(typeof(WebAPIEFCoreContext))]
-    partial class WebAPIEFCoreContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(EmployeeContext))]
+    [Migration("20180528090041_initialcreate")]
+    partial class initialcreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.3-rtm-10026")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WebAPIEFCore.Models.Employees", b =>
+            modelBuilder.Entity("LearningAPI.Models.Employees", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
